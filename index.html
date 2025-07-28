@@ -5,9 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>FROGZILLA 🐸💥</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
     body {
       margin: 0;
       font-family: 'Press Start 2P', monospace;
@@ -17,38 +16,48 @@
       text-align: center;
       padding: 20px;
     }
-
     header img {
       max-width: 100%%;
       height: auto;
       border: 4px solid #00ff00;
       box-shadow: 0 0 20px #00ff00;
     }
-
     h1 {
-      font-size: 28px;
+      font-size: 26px;
       margin-top: 20px;
     }
-
-    p {
-      font-size: 14px;
+    p, .token-info {
+      font-size: 12px;
       max-width: 800px;
-      margin: 0 auto 20px;
+      margin: 10px auto;
     }
-
-    a.button {
+    .button {
       display: inline-block;
       margin: 10px;
-      padding: 10px 20px;
+      padding: 10px 15px;
       border: 2px solid #00ffff;
       color: #00ffff;
       text-decoration: none;
-      font-size: 14px;
+      font-size: 13px;
     }
-
-    a.button:hover {
+    .button:hover {
       background-color: #00ffff;
       color: #000000;
+    }
+    .carousel {
+      margin: 30px auto;
+      max-width: 100%%;
+    }
+    .carousel img {
+      max-width: 90%%;
+      height: auto;
+      margin: 10px auto;
+      border: 3px solid #00ff00;
+    }
+    .countdown {
+      font-size: 14px;
+      margin-top: 20px;
+      color: #00ffff;
     }
   </style>
 </head>
@@ -57,10 +66,46 @@
     <img src="frogzilla_realistic.png" alt="Frogzilla">
     <h1>$FROGZ - FROGZILLA</h1>
   </header>
-  <p>The radioactive meme that refuses to die. Powered by Solana. Forged in the swamp.</p>
-  <p>
+
+  <div class="token-info">
+    <p>Ticker: $FROGZ</p>
+    <p>Chain: Solana</p>
+    <p>Total Supply: 1,000,000,000</p>
+    <p>LP: Burned ✅</p>
+    <p>Tax: 0%</p>
+  </div>
+
+  <div>
     <a class="button" href="https://pump.fun/DGaQijJYMBYLbnsdRC4pbrfsKnPoDQ5V6kfL4ZHxpump" target="_blank">🔥 Buy $FROGZ on Pump.fun</a>
     <a class="button" href="https://twitter.com/frogzillacoins" target="_blank">@frogzillacoins</a>
-  </p>
+  </div>
+
+  <div class="carousel">
+    <h2>Meme Utility</h2>
+    <img src="frogzilla_meme_chaos.png" alt="FROGZILLA Utility Meme">
+  </div>
+
+  <div class="countdown">
+    Next raid in: <span id="countdown-timer">Loading...</span>
+  </div>
+
+  <script>
+    const targetDate = new Date(Date.now() + 86400000); // 24h from now
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+      if (diff <= 0) {
+        document.getElementById("countdown-timer").innerText = "Now!";
+        return;
+      }
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      document.getElementById("countdown-timer").innerText =
+        hours + "h " + minutes + "m " + seconds + "s";
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
 </body>
 </html>
